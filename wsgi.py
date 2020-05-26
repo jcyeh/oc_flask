@@ -4,6 +4,7 @@ from datetime import timedelta
 from flask import Flask, render_template, flash, request, session, redirect, url_for
 from wtforms import Form, IntegerField, TextField, TextAreaField, validators, StringField, SubmitField
 from markupsafe import escape
+
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
@@ -54,7 +55,7 @@ class RegForm(Form):
 def index():
     global result
     form = RegForm(request.form)
-    print(form.errors)
+    #print(form.errors)
     if request.method == 'POST':
         name=request.form['name']
         email=request.form['email']
@@ -78,7 +79,7 @@ def Form_Q(qID):
     email = session.get('email')
     QID = escape(qID)
     Answer=[]
-    print(form.errors)
+    #print(form.errors)
     if request.method == 'POST':
         for i in range(1, 9):
             value = request.form["A{0}".format(i)]
@@ -110,7 +111,7 @@ def Done():
     return '<h2>太棒了, {0}!  你已完成測試!  測試結果已送至你的 Email<{1}> 囉!</h2>'.format(result[email]['username'], email)
     # result[email]['CW'],
     #    result[email]['CO'],result[email]['SH'],result[email]['PL'],result[email]['TW'],result[email]['ME'],result[email]['RI'],result[email]['FI'])
-    print('Finished the test!')
+    #print('Finished the test!')
 
 if __name__ == "__main__":
     app.run()
