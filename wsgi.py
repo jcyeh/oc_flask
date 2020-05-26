@@ -22,13 +22,12 @@ This is test mail 4!"""
 
 @application.route("/")
 def hello():
-    smtpObj = smtplib.SMTP(smtp_server, port)
-    smtpObj.login(username, password)
-    #smtpObj.set_debuglevel(1)
-    smtpObj.sendmail(sender, receivers, message)
-    smtpObj.quit()
-
-    return "TEST Mail, JC!"
+    #smtpObj = smtplib.SMTP(smtp_server, port)
+    #smtpObj.login(username, password)
+    ##smtpObj.set_debuglevel(1)
+    #smtpObj.sendmail(sender, receivers, message)
+    #smtpObj.quit()
+    return "TEST OC Site, JC!"
 
 if __name__ == "__main__":
     application.run()
