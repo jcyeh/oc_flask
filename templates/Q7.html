@@ -1,0 +1,41 @@
+<title>Reusable Form Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+     <h2>Q7: 對於那些在團隊工作中或與周圍人共事時所遇到的問題：</h2>
+     <form action="" method="post" role="form">
+          {{ form.csrf }}
+     <div class="form-group">
+          <input type="text" class="form-control" id="A1" name="A1" maxlength="2" size="2">
+          <label for="A1">1. 我很容易對那些阻礙前進的人表現出不耐煩</label><br>
+          <input type="text" class="form-control" id="A2" name="A2" maxlength="2" size="2">
+          <label for="A2">2. 別人可能批評我太重分析而缺少直覺</label><br>
+          <input type="text" class="form-control" id="A3" name="A3" maxlength="2" size="2">
+          <label for="A3">3. 我有做好工作的願望，能確保工作的持續進展</label><br>
+          <input type="text" class="form-control" id="A4" name="A4" maxlength="2" size="2">
+          <label for="A4">4. 我常常容易產生厭煩感，需要一、二個有激情的人使我振作起來</label><br>
+          <input type="text" class="form-control" id="A5" name="A5" maxlength="2" size="2">
+          <label for="A5">5. 如果目標不明確， 讓我起步是很困難的</label><br>
+          <input type="text" class="form-control" id="A6" name="A6" maxlength="2" size="2">
+          <label for="A6">6. 對於我遇到的複雜問題，我有時不善於加以解釋和澄清</label><br>
+          <input type="text" class="form-control" id="A7" name="A7" maxlength="2" size="2">
+          <label for="A7">7. 對於那些我不能做的事，我有意識地求助於他人</label><br>
+          <input type="text" class="form-control" id="A8" name="A8" maxlength="2" size="2">
+          <label for="A8">8. 當我與真正的對立面發生衝突時，我沒有把握使對方理解我的觀點</label>
+     </div>
+     <br>
+     <button type="submit" class="btn btn-success">Next</button>
+     </form>
+     {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+          {% for message in messages %}
+               {% if "Error" not in message[1]: %}
+                  <div class="alert alert-info"><strong>Success! </strong>{{ message[1] }}</div>
+               {% endif %}
+
+               {% if "Error" in message[1]: %}
+                  <div class="alert alert-warning">{{ message[1][8:] }}</div>
+               {% endif %}
+          {% endfor %}
+     {% endif %}
+     {% endwith %}
+</div>

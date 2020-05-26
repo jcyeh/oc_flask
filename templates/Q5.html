@@ -1,0 +1,41 @@
+<title>Reusable Form Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+     <h2>Q5: 我工作中，我得到滿足，因為：</h2>
+     <form action="" method="post" role="form">
+          {{ form.csrf }}
+     <div class="form-group">
+          <input type="text" class="form-control" id="A1" name="A1" maxlength="2" size="2">
+          <label for="A1">1. 我喜歡分析情況，權衡所有可能的選擇</label><br>
+          <input type="text" class="form-control" id="A2" name="A2" maxlength="2" size="2">
+          <label for="A2">2. 我對尋找解決問題的可行方案感興趣</label><br>
+          <input type="text" class="form-control" id="A3" name="A3" maxlength="2" size="2">
+          <label for="A3">3. 我感到，我在促進良好的工作關係</label><br>
+          <input type="text" class="form-control" id="A4" name="A4" maxlength="2" size="2">
+          <label for="A4">4. 我能對決策有強烈的影響</label><br>
+          <input type="text" class="form-control" id="A5" name="A5" maxlength="2" size="2">
+          <label for="A5">5. 我能適應那些有新意的人</label><br>
+          <input type="text" class="form-control" id="A6" name="A6" maxlength="2" size="2">
+          <label for="A6">6. 我能使人們在某項必要的行動上達成一致意見</label><br>
+          <input type="text" class="form-control" id="A7" name="A7" maxlength="2" size="2">
+          <label for="A7">7. 我感到我的身上有一種能使我全身心地投入到工作中去的氣質</label><br>
+          <input type="text" class="form-control" id="A8" name="A8" maxlength="2" size="2">
+          <label for="A8">8. 我很高興能找到一塊可以發揮我想像力的天地</label>
+     </div>
+     <br>
+     <button type="submit" class="btn btn-success">Next</button>
+     </form>
+     {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+          {% for message in messages %}
+               {% if "Error" not in message[1]: %}
+                  <div class="alert alert-info"><strong>Success! </strong>{{ message[1] }}</div>
+               {% endif %}
+
+               {% if "Error" in message[1]: %}
+                  <div class="alert alert-warning">{{ message[1][8:] }}</div>
+               {% endif %}
+          {% endfor %}
+     {% endif %}
+     {% endwith %}
+</div>

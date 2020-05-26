@@ -1,0 +1,41 @@
+<title>Reusable Form Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+     <h2>Q4: 我在工作團隊中的特徵是：</h2>
+     <form action="" method="post" role="form">
+          {{ form.csrf }}
+     <div class="form-group">
+          <input type="text" class="form-control" id="A1" name="A1" maxlength="2" size="2">
+          <label for="A1">1. 我有興趣更多地了解我的同事</label><br>
+          <input type="text" class="form-control" id="A2" name="A2" maxlength="2" size="2">
+          <label for="A2">2. 我經常向別人的見解進行挑戰或堅持自己的意見</label><br>
+          <input type="text" class="form-control" id="A3" name="A3" maxlength="2" size="2">
+          <label for="A3">3. 在辯論中，我通常能找到論據去推翻那些不甚有理的主張</label><br>
+          <input type="text" class="form-control" id="A4" name="A4" maxlength="2" size="2">
+          <label for="A4">4. 我認為，只要計劃必須開始執行，我有推動工作運轉的才能</label><br>
+          <input type="text" class="form-control" id="A5" name="A5" maxlength="2" size="2">
+          <label for="A5">5. 我有意避免使自己太突出或出人意料</label><br>
+          <input type="text" class="form-control" id="A6" name="A6" maxlength="2" size="2">
+          <label for="A6">6. 對承擔的任何工作，我都能做到盡善盡美</label><br>
+          <input type="text" class="form-control" id="A7" name="A7" maxlength="2" size="2">
+          <label for="A7">7. 我樂於與工作團隊以外的人進行聯繫</label><br>
+          <input type="text" class="form-control" id="A8" name="A8" maxlength="2" size="2">
+          <label for="A8">8. 儘管我對所有的觀點都感興趣，但這並不影響我在必要的時候下決心</label>
+     </div>
+     <br>
+     <button type="submit" class="btn btn-success">Next</button>
+     </form>
+     {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+          {% for message in messages %}
+               {% if "Error" not in message[1]: %}
+                  <div class="alert alert-info"><strong>Success! </strong>{{ message[1] }}</div>
+               {% endif %}
+
+               {% if "Error" in message[1]: %}
+                  <div class="alert alert-warning">{{ message[1][8:] }}</div>
+               {% endif %}
+          {% endfor %}
+     {% endif %}
+     {% endwith %}
+</div>

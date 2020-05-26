@@ -1,0 +1,41 @@
+<title>Reusable Form Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+     <h2>Q2: 在團隊中，我可能有的弱點是：</h2>
+     <form action="" method="post" role="form">
+          {{ form.csrf }}
+     <div class="form-group">
+          <input type="text" class="form-control" id="A1" name="A1" maxlength="2" size="2">
+          <label for="A1">1. 如果會議沒有得到很好的組織、控制和主持，我會感到不痛快</label><br>
+          <input type="text" class="form-control" id="A2" name="A2" maxlength="2" size="2">
+          <label for="A2">2. 我容易對那些有高見而又沒有適當地發表出來的人表現得過於寬容</label><br>
+          <input type="text" class="form-control" id="A3" name="A3" maxlength="2" size="2">
+          <label for="A3">3. 只要集體在討論新的觀點，我總是說的太多</label><br>
+          <input type="text" class="form-control" id="A4" name="A4" maxlength="2" size="2">
+          <label for="A4">4. 我的客觀算法，使我很難與同事們打成一片</label><br>
+          <input type="text" class="form-control" id="A5" name="A5" maxlength="2" size="2">
+          <label for="A5">5. 在一定要把事情辦成的情況下，我有時使人感到特彆強硬以至專斷</label><br>
+          <input type="text" class="form-control" id="A6" name="A6" maxlength="2" size="2">
+          <label for="A6">6. 可能由於我過分重視集體的氣氛，我發現自己很難與眾不同</label><br>
+          <input type="text" class="form-control" id="A7" name="A7" maxlength="2" size="2">
+          <label for="A7">7. 我易於陷入突發的想像之中，而忘了正在進行的事情</label><br>
+          <input type="text" class="form-control" id="A8" name="A8" maxlength="2" size="2">
+          <label for="A8">8. 我的同事認為我過分注意細節，總有不必要的擔心，怕把事情搞糟</label>
+     </div>
+     <br>
+     <button type="submit" class="btn btn-success">Next</button>
+     </form>
+     {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+          {% for message in messages %}
+               {% if "Error" not in message[1]: %}
+                  <div class="alert alert-info"><strong>Success! </strong>{{ message[1] }}</div>
+               {% endif %}
+
+               {% if "Error" in message[1]: %}
+                  <div class="alert alert-warning">{{ message[1][8:] }}</div>
+               {% endif %}
+          {% endfor %}
+     {% endif %}
+     {% endwith %}
+</div>
