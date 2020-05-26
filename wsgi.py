@@ -5,10 +5,10 @@ from flask import Flask, render_template, flash, request, session, redirect, url
 from wtforms import Form, IntegerField, TextField, TextAreaField, validators, StringField, SubmitField
 from markupsafe import escape
 
-app = Flask(__name__)
-app.config.from_object(__name__)
-app.config['SECRET_KEY'] = os.urandom(24)
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
+application = Flask(__name__)
+application.config.from_object(__name__)
+application.config['SECRET_KEY'] = os.urandom(24)
+application.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 role_list = ['CW','CO','SH','PL','TW','ME','RI','FI']
 result = {}
 
@@ -51,7 +51,7 @@ class RegForm(Form):
     name = TextField('Name:', validators=[validators.input_required()])
     email = TextField('Email:', validators=[validators.input_required(), validators.Email(), validators.Length(min=6, max=35)])
 
-@app.route("/", methods=['GET', 'POST'])
+@application.route("/", methods=['GET', 'POST'])
 def index():
     global result
     form = RegForm(request.form)
@@ -72,7 +72,7 @@ def index():
 
     return render_template('regform.html', form=form)
 
-@app.route('/Form_Q<int:qID>', methods=['GET', 'POST'])
+@application.route('/Form_Q<int:qID>', methods=['GET', 'POST'])
 def Form_Q(qID):
     global result
     form = BelbinTeamRolesForm(request.form)
@@ -97,7 +97,7 @@ def Form_Q(qID):
 
     return render_template("Q" + str(QID) + ".html", form=form)
 
-@app.route('/Done')
+@application.route('/Done')
 def Done():
     global result
     email = session.get('email')
@@ -114,4 +114,4 @@ def Done():
     #print('Finished the test!')
 
 if __name__ == "__main__":
-    app.run()
+    application.run()
