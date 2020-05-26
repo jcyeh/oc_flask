@@ -87,6 +87,7 @@ def Form_Q(qID):
 
     if form.validate() and sum(Answer) == 10:
         # Save the comment here.
+        print(result, " ", email, " ", Answer)
         result[email]["Q" + str(QID)] = Answer
         if int(QID) == 7:
             return redirect(url_for('Done'))
